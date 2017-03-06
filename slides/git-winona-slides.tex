@@ -2,6 +2,10 @@
 
 \usepackage{tikz}
 \usepackage{minted}
+\usepackage{bbding}
+
+\newcommand{\correctans}{\textcolor{green!50!black}{\CheckmarkBold}}
+\newcommand{\wrongans}{\textcolor{red!50!black}{\XSolidBold}}
 
 % The following were provided by Inkscape:
 \definecolor{cDCDEE0}{RGB}{220,222,224}
@@ -39,9 +43,14 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Why version control?}
+\frametitle{Why version control?\footnote{\url{http://swcarpentry.github.io/git-novice/01-basics/}}}
 
-\url{http://www.phdcomics.com/comics/archive.php?comicid=1531}
+\begin{itemize}
+\item \url{http://www.phdcomics.com/comics/archive.php?comicid=1531}
+
+\item \url{http://bit.ly/motivate_git}
+\end{itemize}
+
 
 \end{frame}
 
@@ -56,7 +65,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{How it works}
+  \frametitle{How it works\footnote{\url{http://swcarpentry.github.io/git-novice/01-basics/}}}
 \resizebox{0.8\textwidth}{!}{
 \begin{minipage}{\textwidth}
   % This was converted from
@@ -115,7 +124,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{How it works}
+  \frametitle{How it works\footnote{\url{http://swcarpentry.github.io/git-novice/01-basics/}}}
 
   \resizebox{0.4\textwidth}{!}{
   \begin{minipage}{\textwidth}
@@ -223,7 +232,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Format for \mintinline{shell}{git} shell commands}
+\frametitle{Format for \mintinline{shell}{git} shell commands\footnote{\url{http://swcarpentry.github.io/git-novice/02-setup/}}}
 
 \texttt{git} \textit{verb}
 
@@ -239,18 +248,28 @@ E.g.:
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Set-up}
+\frametitle{Set-up\footnote{\url{http://swcarpentry.github.io/git-novice/02-setup/}}}
+
+\textcolor{red!50!black}{Don't type the \texttt{\$}s!}
+
+\vskip 1 em
 
 \begin{minted}{shell}
-  $ git config --global user.name "Vlad Dracula"
-  $ git config --global user.email "vlad@tran.sylvan.ia"
-  $ git config --global color.ui "auto"
-  $ git config --global core.editor "nano -w"
+$ git config --global user.name "Vlad Dracula"
+$ git config --global user.email "vlad@tran.sylvan.ia"
+$ git config --global color.ui "auto"
+$ git config --global core.editor "nano -w"
 \end{minted}
 
 \pause
 
+Check all settings:
+\begin{minted}{shell}
+$ git config --list
+\end{minted}
+
 \vskip 1 em
+\pause
 
 Can always get help, e.g.:
 \begin{minted}{shell}
@@ -258,10 +277,181 @@ $ git config -h
 $ git config --help
 \end{minted}
 
+\vskip 1 em
+Or can consult: \textit{Pro Git}, by Scott Chacon and Ben Straub, available for free at: \url{https://git-scm.com/book/en/v2}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Creating a repository\footnote{http://swcarpentry.github.io/git-novice/03-create/}}
+
+\textcolor{red!50!black}{Don't type the \texttt{\$}s!}
+
+Create a directory:
+\begin{minted}{shell}
+$ mkdir planets
+$ cd planets
+\end{minted}
+
+\pause
+Turn it into a git repository:
+\begin{minted}{shell}
+$ git init
+\end{minted}
+\pause
+
+See that a new folder called \mintinline{shell}{.git} has been created.
+\begin{minted}{shell}
+$ ls -a
+\end{minted}
+\pause
+
+Check the status of our repository:
+\begin{minted}{shell}
+$ git status
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+  Create a file called \texttt{mars.txt} (e.g.~using \texttt{nano}) with the following content:
+
+\begin{minted}{text}
+Cold and dry, but everything is my favorite color
+\end{minted}
+
+  \pause
+
+\vskip 1 em
+
+Verify the file exists and its contents:
+
+\begin{minted}{shell}
+$ ls
+$ cat mars.txt
+\end{minted}
+
+\pause
+
+\vskip 1 em
+
+Check the status of our repo:
+\begin{minted}{shell}
+$ git status
+\end{minted}
+
+\vskip 1 em
+\pause
+
+Add the file to our repo:
+\begin{minted}{shell}
+$ git add mars.txt
+$ git status
+\end{minted}
+
+\vskip 1 em
+\pause
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+  Commit to our repo:
+  \begin{minted}{shell}
+$ git commit -m "Start notes on Mars as a base"
+$ git status
+  \end{minted}
+
+  \pause
+  \vskip 1 em
+
+Verify in the log:
+\begin{minted}{shell}
+$ git log
+\end{minted}
+
+\vskip 1 em
+
+\pause
+
+Edit the file \texttt{mars.txt} so that it reads (e.g.~using \texttt{nano}):
+\begin{minted}{text}
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+\end{minted}
+\pause
+
+\vskip 1 em
+
+Recheck the status:
+\begin{minted}{shell}
+$ git status
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+See difference between the current folder contents and repo:
+\begin{minted}{shell}
+$ git diff
+\end{minted}
+\vskip 1 em
+\pause
+
+Now, commit the new changes to your repo:
+\begin{minted}{shell}
+$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git status
+\end{minted}
+\vskip 1 em
+\pause
+
+\textcolor{red!50!black}{This didn't work, because we have to add first:}
+\begin{minted}{shell}
+$ git add mars.txt
+$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git status
+\end{minted}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exercise: Committing Changes to Git\footnote{\url{http://swcarpentry.github.io/git-novice/04-changes/\#committing-changes-to-git}}}
+
+Which command(s) below would save the changes of \texttt{myfile.txt} to my local Git repository?
+\begin{enumerate}
+\item \begin{minted}{shell}
+$ git commit -m "my recent changes"
+\end{minted}
+\onslide<2->{\wrongans\ \textcolor{red!50!black}{Would only create a commit if files have already been staged.}}
+\item \begin{minted}{shell}
+$ git init myfile.txt
+$ git commit -m "my recent changes"
+\end{minted}
+\onslide<3->{\wrongans\ \textcolor{red!50!black}{Would try to create a new repository.}}
+\item \begin{minted}{shell}
+$ git add myfile.txt
+$ git commit -m "my recent changes"
+\end{minted}
+\onslide<4->{\correctans\ \textcolor{green!50!black}{Is correct: first add the file to the staging area, then commit.}}
+\item \begin{minted}{shell}
+$ git commit -m myfile.txt "my recent changes"
+\end{minted}
+\onslide<5->{\wrongans\ \textcolor{red!50!black}{Would try to commit a file ``my recent changes'' with the message \texttt{myfile.txt}.}}
+\end{enumerate}
+
 \end{frame}
 
 \begin{frame}
-  \frametitle{Staging area}
+  \frametitle{Staging area\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
 
   \resizebox{0.9\textwidth}{!}{
   \begin{minipage}{\textwidth}
@@ -387,8 +577,75 @@ $ git config --help
 
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+Edit the file \texttt{mars.txt} so that it reads (e.g.~using \texttt{nano}):
+\begin{minted}{text}
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+\end{minted}
+\vskip 1 em
+\pause
+
+See the differences:
+\begin{minted}{shell}
+$ git diff
+\end{minted}
+\vskip 1 em
+\pause
+
+Re-stage the file, then look at differences again:
+\begin{minted}{shell}
+$ git add mars.txt
+$ git diff
+\end{minted}
+\vskip 1 em
+\pause
+
+To see the differences, we need the \texttt{--staged} flag:
+\begin{minted}{shell}
+$ git diff --staged
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+Commit to the repo:
+\begin{minted}{shell}
+$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git status
+$ git log
+\end{minted}
+\vskip 1 em
+\pause
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Directories in git\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+Git does not automatically add directories:
+\begin{minted}{shell}
+$ mkdir directory
+$ git status
+\end{minted}
+\pause
+\vskip 1 em
+
+You have to add it explicitly:
+\begin{minted}{shell}
+$ git add directory
+$ git status
+\end{minted}
+
+\end{frame}
+
 \begin{frame}
-  \frametitle{Committing}
+  \frametitle{Committing\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
 
   \resizebox{0.9\textwidth}{!}{
   \begin{minipage}{\textwidth}
@@ -552,6 +809,23 @@ $ git config --help
 
   \end{minipage}
 }
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise: Choosing a Commit Message\footnote{\url{http://swcarpentry.github.io/git-novice/04-changes/\#choosing-a-commit-message}}}
+
+Which of the following commit messages would be most appropriate for the last commit made to \texttt{mars.txt}?
+
+\begin{enumerate}
+  \item ``Changes'' \onslide<2->{\wrongans}
+  \item ``Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt'' \onslide<2->{\wrongans}
+  \item ``Discuss effects of Mars’ climate on the Mummy'' \onslide<2->{\correctans}
+\end{enumerate}
+
+\vskip 1 em
+\onslide<3->{Answer 1 is not descriptive enough, and answer 2 is too descriptive and redundant, but answer 3 is good: short but descriptive.}
+
+
 \end{frame}
 
 \begin{frame}
