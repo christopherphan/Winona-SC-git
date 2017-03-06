@@ -1,6 +1,7 @@
 \documentclass[aspectratio=1610]{beamer}
 
 \usepackage{tikz}
+\usepackage{minted}
 
 % The following were provided by Inkscape:
 \definecolor{cDCDEE0}{RGB}{220,222,224}
@@ -43,6 +44,7 @@
 \url{http://www.phdcomics.com/comics/archive.php?comicid=1531}
 
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Why version control?}
@@ -217,6 +219,44 @@
   \end{tikzpicture}
 \end{minipage}
 }
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Format for \mintinline{shell}{git} shell commands}
+
+\texttt{git} \textit{verb}
+
+\vskip 2 em
+
+E.g.:
+\begin{itemize}
+  \item \mintinline{shell}{git add}
+  \item \mintinline{shell}{git commit}
+  \item \mintinline{shell}{git push}
+  \item \mintinline{shell}{git config}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Set-up}
+
+\begin{minted}{shell}
+  $ git config --global user.name "Vlad Dracula"
+  $ git config --global user.email "vlad@tran.sylvan.ia"
+  $ git config --global color.ui "auto"
+  $ git config --global core.editor "nano -w"
+\end{minted}
+
+\pause
+
+\vskip 1 em
+
+Can always get help, e.g.:
+\begin{minted}{shell}
+$ git config -h
+$ git config --help
+\end{minted}
 
 \end{frame}
 
