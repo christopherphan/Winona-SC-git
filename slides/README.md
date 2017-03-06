@@ -7,3 +7,5 @@ For the lesson plans, see: <http://swcarpentry.github.io/git-novice/>
 The URL to the corresponding page of the lesson is shown on each slide.
 
 Some of the SVG files from the lesson plans were converted to TikZ using Inkscape.
+
+Because these slides use the ``minted`` package (for syntax highlighting), they require [Pygments](http://pygments.org/) to be installed, and for the ``--shell-escape`` flag to be present when running ``pdflatex``. The file ``compile`` is a shell script the author uses for convenience, since his IDE is not configured to provide the ``--shell-escape`` flag.
