@@ -972,24 +972,93 @@ Jennifer has made changes to the Python script that she has been working on for 
 Luckily, she has been keeping track of her project's versions using Git! Which commands below will let her recover the last committed version of her Python script called \texttt{data\_cruncher.py}?
 
 \begin{enumerate}
-\item \begin{minted}{shell}
+\item \begin{minted}[fontsize=\footnotesize]{shell}
 $ git checkout HEAD
 \end{minted}
 \onslide<2->{\wrongans}
-\item \begin{minted}{shell}
+\item \begin{minted}[fontsize=\footnotesize]{shell}
 $ git checkout HEAD data_cruncher.py
 \end{minted}
 \onslide<2->{\correctans}
-\item \begin{minted}{shell}
+\item \begin{minted}[fontsize=\footnotesize]{shell}
 $ git checkout HEAD~1 data_cruncher.py
 \end{minted}
 \onslide<2->{\wrongans}
-\item \begin{minted}[breaklines]{shell}
-$ git checkout <unique ID of the last commit> data_cruncher.py
+\item \begin{minted}[fontsize=\footnotesize]{shell}
+$ git checkout <ID of last commit> data_cruncher.py
 \end{minted}
 \onslide<2->{\correctans}
 \end{enumerate}
+\end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Ignoring things\footnote{\url{http://swcarpentry.github.io/git-novice/06-ignore/}}}
+
+Create some dummy files:
+\begin{minted}{shell}
+$ mkdir results
+$ touch a.dat b.dat c.dat results/a.out results/b.out
+$ ls -lF
+$ ls -lF results
+$ git status
+\end{minted}
+The Unix command \texttt{touch} creates empty files, but let's pretend they have stuff in them \emph{that we want Git to ignore}.
+\pause
+\vskip 1 em
+
+Create a file called \texttt{.gitignore} with the following contents (e.g.~using \texttt{nano}):
+\begin{minted}{text}
+*.dat
+results/
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ignoring things\footnote{\url{http://swcarpentry.github.io/git-novice/06-ignore/}}}
+
+Check the status:
+\begin{minted}{shell}
+$ git status
+\end{minted}
+\pause
+\vskip 1 em
+
+We want to track \texttt{.gitignore} (so if someone else clones our repo and generates these files, they will be ignored).
+\begin{minted}{shell}
+$ git add .gitignore
+$ git commit -m "Add the ignore file"
+$ git status
+\end{minted}
+\pause
+\vskip 1 em
+
+Git will even prevent us from adding things it's been told to ignore:
+\begin{minted}{shell}
+$ git add a.dat
+$ git status --ignored
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise: Ignoring all data files in a directory\footnote{\url{http://swcarpentry.github.io/git-novice/06-ignore/\#ignoring-all-data-files-in-a-directory}}}
+Given a directory structure that looks like:
+\begin{minted}{text}
+results/data/position/gps/a.data
+results/data/position/gps/b.data
+results/data/position/gps/c.data
+results/data/position/gps/info.txt
+results/plots
+\end{minted}
+\vskip 1 em 
+What's the shortest \texttt{.gitignore} rule you could write to ignore all \texttt{.data} files in \texttt{result/data/position/gps}? Do not ignore the \texttt{info.txt}.
+
+
+\pause
+\vskip 1 em
+\textcolor{green!50!black}{
+Appending \texttt{results/data/position/gps/*.data} will match every file in \texttt{results/data/position/gps} that ends with \texttt{.data}. The file \texttt{results/data/position/gps/info.txt} will not be ignored.
+}
 
 \end{frame}
 
