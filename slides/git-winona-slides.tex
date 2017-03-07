@@ -1,9 +1,10 @@
 \documentclass{beamer}
 
-\usepackage{tikz}
-\usepackage{minted}
-\usepackage{bbding}
-\usepackage{menukeys}
+\usepackage{tikz} % Package for drawing things. I used Inkscape
+                  % to convert SVG files to TikZ commands.
+\usepackage{minted} % Uses Pygments to highlight
+\usepackage{bbding} % Provides the red X and green checkmark
+\usepackage{menukeys} % Makes the keycap [Q] look nice
 
 \newcommand{\correctans}{\textcolor{green!50!black}{\CheckmarkBold}}
 \newcommand{\wrongans}{\textcolor{red!50!black}{\XSolidBold}}
@@ -1050,7 +1051,7 @@ results/data/position/gps/c.data
 results/data/position/gps/info.txt
 results/plots
 \end{minted}
-\vskip 1 em 
+\vskip 1 em
 What's the shortest \texttt{.gitignore} rule you could write to ignore all \texttt{.data} files in \texttt{result/data/position/gps}? Do not ignore the \texttt{info.txt}.
 
 
