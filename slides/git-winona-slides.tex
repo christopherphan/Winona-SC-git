@@ -814,25 +814,6 @@ Note: If the log it too long, Git will show in a ``pager'' interface. Press \key
 \end{frame}
 
 
-\begin{frame}[fragile]
-  \frametitle{Directories in git\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
-
-Git does not automatically add directories:
-\begin{minted}{shell}
-$ mkdir directory
-$ git status
-\end{minted}
-\pause
-\vskip 1 em
-
-You have to add it explicitly:
-\begin{minted}{shell}
-$ git add directory
-$ git status
-\end{minted}
-
-\end{frame}
-
 
 \begin{frame}[fragile]
 \frametitle{Exercise: Choosing a Commit Message\footnote{\url{http://swcarpentry.github.io/git-novice/04-changes/\#choosing-a-commit-message}}}
@@ -847,6 +828,42 @@ Which of the following commit messages would be most appropriate for the last co
 
 \vskip 1 em
 \onslide<3->{Answer 1 is not descriptive enough, and answer 2 is too descriptive and redundant, but answer 3 is good: short but descriptive.}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exploring history\footnote{\url{http://swcarpentry.github.io/git-novice/05-history/}}}
+
+Edit the file \texttt{mars.txt} so that it reads (e.g.~using \texttt{nano}):
+\begin{minted}{text}
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+An ill-considered change
+\end{minted}
+
+\pause
+\vskip 1 em
+
+Compare with previous versions:
+\begin{minted}{shell}
+$ git diff HEAD mars.txt
+\end{minted}
+\pause
+\begin{minted}{shell}
+$ git diff HEAD~1 mars.txt
+\end{minted}
+\pause
+\begin{minted}{shell}
+$ git diff HEAD~2 mars.txt
+\end{minted}
+\pause
+
+Show commit message as well:
+\begin{minted}{shell}
+$ git show HEAD~2 mars.txt
+\end{minted}
 
 
 \end{frame}
