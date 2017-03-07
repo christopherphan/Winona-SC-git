@@ -865,6 +865,131 @@ Show commit message as well:
 $ git show HEAD~2 mars.txt
 \end{minted}
 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exploring history\footnote{\url{http://swcarpentry.github.io/git-novice/05-history/}}}
+
+Access the log again:
+\begin{minted}{shell}
+$ git log
+\end{minted}
+\pause
+
+In the middle will be a message such as:
+\begin{minted}[fontsize=\footnotesize]{text}
+commit 4eece5059b74acd7223fad89d192b262ec41651f
+Author: Christopher Phan <cphan@chrisphan.com>
+Date:   Mon Mar 6 19:46:20 2017 -0600
+
+    Add concerns about effects of Mars' moons on Wolfman
+\end{minted}
+
+The string \mintinline{text}{4eece5059b74acd7223fad89d192b262ec41651f} is a unique identifier for the commit (will be different for you).
+\pause
+\vskip 1 em
+Can get a diff in relation to this commit:
+\begin{minted}[breaklines]{shell}
+$ git diff 4eece5059b74acd7223fad89d192b262ec41651f mars.txt
+\end{minted}
+\pause
+\textcolor{red!50!black}{This is suboptimal!} \pause Can abbreviate:
+\begin{minted}[breaklines]{shell}
+$ git diff 4eece mars.txt
+\end{minted}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exploring history\footnote{\url{http://swcarpentry.github.io/git-novice/05-history/}}}
+
+Edit the file \texttt{mars.txt} so that it reads (e.g.~using \texttt{nano}):
+\begin{minted}{text}
+We will need to manufacture our own oxygen
+\end{minted}
+Delete the other lines.
+\vskip 1 em
+\pause
+
+\begin{minted}{shell}
+$ git status
+\end{minted}
+\pause
+\vskip 1 em
+
+Suppose we didn't like the change. Can undo it:
+\begin{minted}{shell}
+$ git checkout HEAD mars.txt
+$ cat mars.txt
+\end{minted}
+\pause
+\vskip 1 em
+
+Back to the last commit!
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exploring history\footnote{\url{http://swcarpentry.github.io/git-novice/05-history/}}}
+
+Suppose we want to go back to the way things were:
+\begin{minted}{shell}
+$ git log
+\end{minted}
+\pause
+Take note of the first commit:
+\begin{minted}[fontsize=\footnotesize]{text}
+commit 4223fa9e5a953eb98381d9f724a3d715bff0e88f
+Author: Christopher Phan <cphan@chrisphan.com>
+Date:   Mon Mar 6 19:36:24 2017 -0600
+
+    Start notes on Mars as a base
+\end{minted}
+\pause
+
+We can go back there. (Replace \texttt{4223fa} with the first few characters shown on your system.)
+\begin{minted}{shell}
+$ git checkout 4223fa mars.txt
+$ cat mars.txt
+$ git status
+\end{minted}
+\pause
+
+I could commit this, if I wanted. But let's revert again:
+\begin{minted}{shell}
+$ git checkout -f master mars.txt
+$ cat mars.txt
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise: Recovering older versions of a file\footnote{\url{http://swcarpentry.github.io/git-novice/05-history/\#recovering-older-versions-of-a-file}}}
+
+Jennifer has made changes to the Python script that she has been working on for weeks, and the modifications she made this morning ``broke'' the script and it no longer runs. She has spent about one hour trying to fix it, with no luck \dots \pause
+
+Luckily, she has been keeping track of her project's versions using Git! Which commands below will let her recover the last committed version of her Python script called \texttt{data\_cruncher.py}?
+
+\begin{enumerate}
+\item \begin{minted}{shell}
+$ git checkout HEAD
+\end{minted}
+\onslide<2->{\wrongans}
+\item \begin{minted}{shell}
+$ git checkout HEAD data_cruncher.py
+\end{minted}
+\onslide<2->{\correctans}
+\item \begin{minted}{shell}
+$ git checkout HEAD~1 data_cruncher.py
+\end{minted}
+\onslide<2->{\wrongans}
+\item \begin{minted}[breaklines]{shell}
+$ git checkout <unique ID of the last commit> data_cruncher.py
+\end{minted}
+\onslide<2->{\correctans}
+\end{enumerate}
+
 
 \end{frame}
 
