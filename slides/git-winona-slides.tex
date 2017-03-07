@@ -567,108 +567,11 @@ $ git status
 
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Exercise: Committing Changes to Git\footnote{\url{http://swcarpentry.github.io/git-novice/04-changes/\#committing-changes-to-git}}}
-
-Which command(s) below would save the changes of \texttt{myfile.txt} to my local Git repository?
-\begin{enumerate}
-\item \begin{minted}{shell}
-$ git commit -m "my recent changes"
-\end{minted}
-\onslide<2->{\wrongans\ \textcolor{red!50!black}{Would only create a commit if files have already been staged.}}
-\item \begin{minted}{shell}
-$ git init myfile.txt
-$ git commit -m "my recent changes"
-\end{minted}
-\onslide<3->{\wrongans\ \textcolor{red!50!black}{Would try to create a new repository.}}
-\item \begin{minted}{shell}
-$ git add myfile.txt
-$ git commit -m "my recent changes"
-\end{minted}
-\onslide<4->{\correctans\ \textcolor{green!50!black}{Is correct: first add the file to the staging area, then commit.}}
-\item \begin{minted}{shell}
-$ git commit -m myfile.txt "my recent changes"
-\end{minted}
-\onslide<5->{\wrongans\ \textcolor{red!50!black}{Would try to commit a file ``my recent changes'' with the message \texttt{myfile.txt}.}}
-\end{enumerate}
-
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
-
-Edit the file \texttt{mars.txt} so that it reads (e.g.~using \texttt{nano}):
-\begin{minted}{text}
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-\end{minted}
-\vskip 1 em
-\pause
-
-See the differences:
-\begin{minted}{shell}
-$ git diff
-\end{minted}
-\vskip 1 em
-\pause
-
-Re-stage the file, then look at differences again:
-\begin{minted}{shell}
-$ git add mars.txt
-$ git diff
-\end{minted}
-\vskip 1 em
-\pause
-
-To see the differences, we need the \texttt{--staged} flag:
-\begin{minted}{shell}
-$ git diff --staged
-\end{minted}
-
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
-
-
-Commit to the repo:
-\begin{minted}[breaklines]{shell}
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
-$ git status
-$ git log
-\end{minted}
-\vskip 1 em
-\pause
-
-Note: If the log it too long, Git will show in a ``pager'' interface. Press \keys{Q} to get out.
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-  \frametitle{Directories in git\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
-
-Git does not automatically add directories:
-\begin{minted}{shell}
-$ mkdir directory
-$ git status
-\end{minted}
-\pause
-\vskip 1 em
-
-You have to add it explicitly:
-\begin{minted}{shell}
-$ git add directory
-$ git status
-\end{minted}
-
-\end{frame}
 
 \begin{frame}
   \frametitle{Committing\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
 
-  \resizebox{0.9\textwidth}{!}{
+  \resizebox{0.7\textwidth}{!}{
   \begin{minipage}{\textwidth}
     % This was converted from
     % <http://swcarpentry.github.io/git-novice/fig/git-committing.svg>
@@ -831,6 +734,105 @@ $ git status
   \end{minipage}
 }
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise: Committing Changes to Git\footnote{\url{http://swcarpentry.github.io/git-novice/04-changes/\#committing-changes-to-git}}}
+
+Which command(s) below would save the changes of \texttt{myfile.txt} to my local Git repository?
+\begin{enumerate}
+\item \begin{minted}{shell}
+$ git commit -m "my recent changes"
+\end{minted}
+\onslide<2->{\wrongans\ \textcolor{red!50!black}{Would only create a commit if files have already been staged.}}
+\item \begin{minted}{shell}
+$ git init myfile.txt
+$ git commit -m "my recent changes"
+\end{minted}
+\onslide<3->{\wrongans\ \textcolor{red!50!black}{Would try to create a new repository.}}
+\item \begin{minted}{shell}
+$ git add myfile.txt
+$ git commit -m "my recent changes"
+\end{minted}
+\onslide<4->{\correctans\ \textcolor{green!50!black}{Is correct: first add the file to the staging area, then commit.}}
+\item \begin{minted}{shell}
+$ git commit -m myfile.txt "my recent changes"
+\end{minted}
+\onslide<5->{\wrongans\ \textcolor{red!50!black}{Would try to commit a file ``my recent changes'' with the message \texttt{myfile.txt}.}}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+Edit the file \texttt{mars.txt} so that it reads (e.g.~using \texttt{nano}):
+\begin{minted}{text}
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+\end{minted}
+\vskip 1 em
+\pause
+
+See the differences:
+\begin{minted}{shell}
+$ git diff
+\end{minted}
+\vskip 1 em
+\pause
+
+Re-stage the file, then look at differences again:
+\begin{minted}{shell}
+$ git add mars.txt
+$ git diff
+\end{minted}
+\vskip 1 em
+\pause
+
+To see the differences, we need the \texttt{--staged} flag:
+\begin{minted}{shell}
+$ git diff --staged
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tracking changes\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+
+Commit to the repo:
+\begin{minted}[breaklines]{shell}
+$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git status
+$ git log
+\end{minted}
+\vskip 1 em
+\pause
+
+Note: If the log it too long, Git will show in a ``pager'' interface. Press \keys{Q} to get out.
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Directories in git\footnote{http://swcarpentry.github.io/git-novice/04-changes/}}
+
+Git does not automatically add directories:
+\begin{minted}{shell}
+$ mkdir directory
+$ git status
+\end{minted}
+\pause
+\vskip 1 em
+
+You have to add it explicitly:
+\begin{minted}{shell}
+$ git add directory
+$ git status
+\end{minted}
+
+\end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{Exercise: Choosing a Commit Message\footnote{\url{http://swcarpentry.github.io/git-novice/04-changes/\#choosing-a-commit-message}}}
