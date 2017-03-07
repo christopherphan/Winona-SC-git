@@ -367,10 +367,6 @@ $ git add mars.txt
 $ git status
 \end{minted}
 
-\vskip 1 em
-\pause
-
-
 \end{frame}
 
 \begin{frame}[fragile]
@@ -421,15 +417,17 @@ $ git diff
 \pause
 
 Now, commit the new changes to your repo:
-\begin{minted}{shell}
+
+\begin{minted}[breaklines]{shell}
 $ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
 $ git status
 \end{minted}
+
 \vskip 1 em
 \pause
 
 \textcolor{red!50!black}{This didn't work, because we have to add first:}
-\begin{minted}{shell}
+\begin{minted}[breaklines]{shell}
 $ git add mars.txt
 $ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
 $ git status
