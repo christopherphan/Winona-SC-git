@@ -261,15 +261,24 @@ $ git config --global color.ui "auto"
 $ git config --global core.editor "nano -w"
 \end{minted}
 
+If you want to use Notepad instead, you can do:
+\begin{minted}{shell}
+$ git config core.editor notepad
+\end{minted}
+
 \pause
+
+\vskip 1 em
 
 Check all settings:
 \begin{minted}{shell}
 $ git config --list
 \end{minted}
 
-\vskip 1 em
-\pause
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Set-up\footnote{\url{http://swcarpentry.github.io/git-novice/02-setup/}}}
 
 Can always get help, e.g.:
 \begin{minted}{shell}
@@ -291,6 +300,7 @@ Create a directory:
 \begin{minted}{shell}
 $ mkdir planets
 $ cd planets
+$ ls -aF
 \end{minted}
 
 \pause
@@ -302,7 +312,7 @@ $ git init
 
 See that a new folder called \mintinline{shell}{.git} has been created.
 \begin{minted}{shell}
-$ ls -a
+$ ls -aF
 \end{minted}
 \pause
 
